@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="row">
+        <h2>Start Chatting</h2>
+    </div>
+    <h4>Connecting people</h4>
+    <div class="card">
+        <div class="card-body">
+            <uib-tabset type="pills" justified="true">
+                <uib-tab heading="Group Chat">
+                    <form name="groupChat">
+                        <div id="UrlShort">
+                            <div class="row">
+                                <div class="col-sm-12 left-right-padding-5-per">
+                                    <h4 class="card-title">Send message to group</h4>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <button class="btn btn-info" data-ng-click="homeCTRL.joinGroupChat()">Join Group Chat</button>                                 
+                                        </div>
+                                        <div class="col-sm">
+                                            <button class="btn btn-info" data-ng-click="homeCTRL.leaveGroupChat()">Leave Group Chat</button>
+                                        </div>
+                                    </div>
+                                    <label for="Input">Chat Box:</label>
+                                    <div class="form-group">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Group Chat
+                                            </div>
+                                            <div class="card-body scrollbar-div" id="cardBody">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <div class="form-group">
+                                                <textarea rows="2" placeholder="Enter message here..." data-ng-model="homeCTRL.message" class="form-control" name="message" id="message"></textarea>
+                                            </div>                                    
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <button class="btn btn-info" data-ng-click="homeCTRL.sendMessage()">Send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </form>
+                </uib-tab>
+                <uib-tab heading="URL Expander">
+                    <form name="urlExpandForm">
+                        <div id="urlExpand">
+                            <div class="row">
+                                <div class="col-sm-6 left-right-padding-5-per">
+                                    <h4 class="card-title">Enter the shortened url:</h4>
+                                    <label for="input">Input:</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control text-align-center" name="inputExpandUrl" id="inputExpandUrl" ng-minlength="2" rows="7" ng-model="USCtrl.expandUrlInput"
+                                            type="url" required></textarea>
+                                        <span class="text-error" data-ng-show="urlExpandForm.inputExpandUrl.$invalid && urlExpandForm.inputExpandUrl.$dirty && urlExpandForm.inputExpandUrl.$error.required">URL is required</span>
+                                        <span class="text-error" data-ng-show="urlExpandForm.inputExpandUrl.$error.minlength">Minimum length should be two</span>
+                                        <span class="text-error" data-ng-show="urlExpandForm.inputExpandUrl.$error.url">Invalid url!</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 left-right-padding-5-per">
+                                    <h4 class="card-title">See the result here:</h4>
+                                    <label for="output">Output:</label>
+                                    <textarea class="form-control text-align-center" style="color:blue;" name="outputExpandUrl" id="output" ng-minlength="2"
+                                        rows="7" ng-model="USCtrl.expandUrlOutput" disabled>{{USCtrl.expandUrlOutput}}</textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-6 text-center">
+                                    <button class="btn btn-info" data-ng-click="USCtrl.urlExpander()" ng-disabled="urlExpandForm.inputExpandUrl.$invalid && urlExpandForm.inputExpandUrl.$dirty || urlExpandForm.$invalid">Convert</button>
+                                </div>
+                            </div>
+                    </form>
+                </uib-tab>
+            </uib-tabset>
+            </div>
+        </div>
+    </div>

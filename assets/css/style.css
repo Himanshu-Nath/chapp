@@ -1,0 +1,20 @@
+.cards {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap:20px;
+}
+.cards li {
+    background-color: #D4E4F7;
+    border: 1px solid #99ff66;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.scrollbar-div {
+    float: left;
+    overflow-y: auto;
+    height: 300px;
+}

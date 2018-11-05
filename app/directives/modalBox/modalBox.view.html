@@ -1,0 +1,35 @@
+<div ng-if="news != null">
+    <button type="button" class="btn btn-default text-right" ng-click="createPopupBox(news, 'lg')">Detail</button>
+</div>
+
+<script type="text/ng-template" id="modalNews.html">
+	<div class="modal-header">
+        <div class="row text-center">
+            <h2 class="modal-title"><b>News Detail<b></h2>
+        </div>
+        <div class="row">            
+            <div class="col-sm-10 text-left">
+                <h4>{{MNCtrl.newsDescription.title}}</h4>
+            </div>
+            <div class="col-sm-2 text-right">
+                <span class="label label-primary" data-toggle="tooltip" data-placement="top" title="Source Name" ng-show="MNCtrl.newsDescription.source.name != null">{{MNCtrl.newsDescription.source.name}}</span>
+                <span class="label label-primary" data-toggle="tooltip" data-placement="top" title="Source Name" ng-show="MNCtrl.newsDescription.source.name == null">N/A</span>
+            </div>
+        </div>
+	</div>
+	<div class="modal-body">
+        <span><b>Author Name:</b>{{MNCtrl.newsDescription.author}}</span>
+        </br>
+        <span ng-show="MNCtrl.newsDescription.description != null"><b>Description:</b>&nbsp;&nbsp;{{MNCtrl.newsDescription.description}}</span>
+        <span ng-show="MNCtrl.newsDescription.description == null"><b>Description:</b>&nbsp;&nbsp;N/A</span>
+        </br>
+        <span><b>URL:</b>&nbsp;&nbsp;<a ng-href="{{MNCtrl.newsDescription.url}}" target="_blank">{{MNCtrl.newsDescription.url}}</a></span>
+        </br>
+	</div>
+	<div class="modal-footer">
+        <span class="text-left">
+            <i>{{MNCtrl.newsDescription.publishedAt | date : "fullDate" }}</i>
+        </span>
+        <button type="button" class="btn btn-default text-right" data-dismiss="modal" ng-click="MNCtrl.ok()">Close</button>
+    </div>
+</script>
