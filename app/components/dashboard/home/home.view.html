@@ -4,7 +4,7 @@
     </div>
     <h4>Connecting people</h4>
     <div class="card">
-        <div class="card-body">
+        <div class="card-body border-secondary">
             <uib-tabset type="pills" justified="true">
                 <uib-tab heading="Group Chat">
                     <form name="groupChat">
@@ -27,7 +27,7 @@
                                                 Group Chat
                                             </div>
                                             <div class="card-body scrollbar-div" id="cardBody">
-
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -35,11 +35,11 @@
                                     <div class="row">
                                         <div class="col-sm-10">
                                             <div class="form-group">
-                                                <textarea rows="2" placeholder="Enter message here..." data-ng-model="homeCTRL.message" class="form-control" name="message" id="message"></textarea>
+                                                <textarea rows="2" code="13" dl-key-code="homeCTRL.sendMessage()" ng-keypress="homeCTRL.whenTyping($event)" ng-blur="homeCTRL.whenNotTyping($event)" placeholder="Enter message here..." data-ng-model="homeCTRL.message" class="form-control" name="message" id="message"></textarea>
                                             </div>                                    
                                         </div>
                                         <div class="col-sm-2">
-                                            <button class="btn btn-info" data-ng-click="homeCTRL.sendMessage()">Send</button>
+                                            <button class="btn btn-info" ng-disabled="!homeCTRL.sendButtonFocus || homeCTRL.message == undefined" data-ng-click="homeCTRL.sendMessage()">Send</button>
                                         </div>
                                     </div>
                                 </div>
