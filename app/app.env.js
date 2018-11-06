@@ -6,7 +6,7 @@ if(~location.host.indexOf("localhost")) {
 	};
 } else {
 	APP.config = {
-		'serviceUrl' : 'https://'+ location.host
+		'serviceUrl' : 'http://'+ location.host
 	};
 }
 

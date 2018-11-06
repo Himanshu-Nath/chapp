@@ -57,6 +57,8 @@ app.post('/api/user/forgotpassword', User.forgotPassword);
 app.post('/api/user/otpverification', User.otpVerification);
 app.put('/api/user/logout/:email', User.logoutUser);
 
+app.get('/api/user/logout/:email', User.logoutUser);
+
 app.post('/api/admin/register', User.registerAdmin);
 app.post('/api/admin/login', User.loginAdmin);
 

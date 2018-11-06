@@ -12,14 +12,6 @@
                             <div class="row">
                                 <div class="col-sm-12 left-right-padding-5-per">
                                     <h4 class="card-title">Send message to group</h4>
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            <button class="btn btn-info" data-ng-click="homeCTRL.joinGroupChat()">Join Group Chat</button>                                 
-                                        </div>
-                                        <div class="col-sm">
-                                            <button class="btn btn-info" data-ng-click="homeCTRL.leaveGroupChat()">Leave Group Chat</button>
-                                        </div>
-                                    </div>
                                     <label for="Input">Chat Box:</label>
                                     <div class="form-group">
                                         <div class="card">
@@ -33,13 +25,14 @@
                                     </div>
                                     <br>
                                     <div class="row">
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-9">
                                             <div class="form-group">
-                                                <textarea rows="2" code="13" dl-key-code="homeCTRL.sendMessage()" ng-keypress="homeCTRL.whenTyping($event)" ng-blur="homeCTRL.whenNotTyping($event)" placeholder="Enter message here..." data-ng-model="homeCTRL.message" class="form-control" name="message" id="message"></textarea>
+                                                <textarea rows="2" code="13" dl-key-code="homeCTRL.sendMessage()" ng-focus="homeCTRL.whenTyping(true)" ng-blur="homeCTRL.whenTyping(false)" placeholder="Enter message here..." data-ng-model="homeCTRL.message" class="form-control" name="message" id="message"></textarea>
                                             </div>                                    
                                         </div>
-                                        <div class="col-sm-2">
-                                            <button class="btn btn-info" ng-disabled="!homeCTRL.sendButtonFocus || homeCTRL.message == undefined" data-ng-click="homeCTRL.sendMessage()">Send</button>
+                                        <div class="col-sm-3">
+                                            <button class="btn btn-info float-left" ng-disabled="!homeCTRL.groupJoined || homeCTRL.message == undefined || !homeCTRL.message.length > 0" data-ng-click="homeCTRL.sendMessage()">Send</button>
+                                            <button class="btn btn-info float-right" ng-disabled="!homeCTRL.groupJoined" data-ng-click="homeCTRL.leaveGroupChat()">Leave Group</button>
                                         </div>
                                     </div>
                                 </div>
@@ -47,12 +40,11 @@
                         </div>
                     </form>
                 </uib-tab>
-                <uib-tab heading="URL Expander">
-                    <form name="urlExpandForm">
-                        <div id="urlExpand">
+                <uib-tab heading="Friends">
+                    <form name="friendsForm">
                             <div class="row">
                                 <div class="col-sm-6 left-right-padding-5-per">
-                                    <h4 class="card-title">Enter the shortened url:</h4>
+                                    <h4 class="card-title">Online Friends</h4>
                                     <label for="input">Input:</label>
                                     <div class="form-group">
                                         <textarea class="form-control text-align-center" name="inputExpandUrl" id="inputExpandUrl" ng-minlength="2" rows="7" ng-model="USCtrl.expandUrlInput"

@@ -17,10 +17,8 @@ io.on('connection', (socket) => {
 
     // when the client emits 'add user', this listens and executes
     socket.on('add user', (username) => {
-        console.log("---" + usersCount);
         socket.username = username;        
         ++usersCount;
-        console.log("--------" + usersCount);
         socket.emit('login', {
             usersCount: usersCount
         });
@@ -33,11 +31,8 @@ io.on('connection', (socket) => {
     });
 
     // when the user disconnects.. perform this
-    socket.on('disconnect', () => {
-        console.log("=====" + usersCount);
+    socket.on('user left', () => {
         --usersCount;
-        console.log("==========" + usersCount);
-
         // echo globally that this client has left
         socket.broadcast.emit('user left', {
             username: socket.username,
@@ -46,16 +41,16 @@ io.on('connection', (socket) => {
     });
 
     // when the client emits 'typing', we broadcast it to others
-    socket.on('typing', () => {
+    socket.on('typing', (username) => {
         socket.broadcast.emit('typing', {
-            username: socket.username
+            username: username
         });
     });
 
     // when the client emits 'stop typing', we broadcast it to others
-    socket.on('stop typing', () => {
+    socket.on('stop typing', (username) => {
         socket.broadcast.emit('stop typing', {
-            username: socket.username
+            username: username
         });
     });
     });
