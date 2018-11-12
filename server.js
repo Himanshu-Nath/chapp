@@ -49,6 +49,7 @@ var userImpl = require('./server/serviceImpl/userImpl');
 // });
 
 var User = require('./server/routes/users');
+var Friend = require('./server/routes/friends');
 
 app.get('/api/user/googletokenverify', User.googleTokenVerification);
 app.post('/api/user/register', User.registerUser);
@@ -57,7 +58,13 @@ app.post('/api/user/forgotpassword', User.forgotPassword);
 app.post('/api/user/otpverification', User.otpVerification);
 app.put('/api/user/logout/:email', User.logoutUser);
 
-app.get('/api/user/logout/:email', User.logoutUser);
+app.get('/api/user/find', Friend.findUsers);
+app.get('/api/user/:userId', Friend.finduserById);
+app.post('/api/user/friendrequest', Friend.addFriendRequest);
+app.get('/api/user/followandfollower', Friend.getUserFollowAndFollowerList);
+app.put('/api/user/acceptandreject', Friend.acceptAndRejectRequest);
+app.get('/api/user/friendlist/:userId', Friend.getUserFriendList);
+app.get('/api/user/onlinefriends/:userId', Friend.getUserOnlineFriends);
 
 app.post('/api/admin/register', User.registerAdmin);
 app.post('/api/admin/login', User.loginAdmin);

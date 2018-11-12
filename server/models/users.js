@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+var mongoosePaginate = require('mongoose-paginate');
 const keys = require('../util/keys');
 var Schema = mongoose.Schema;
 
@@ -10,6 +11,9 @@ var UserSchema = new Schema({
     password: {type: String},
     access_token: {type: String},
     image: {type: String},
+    follow:[],
+    follower:[],
+    like:[],
     otp: {type: Number},
     login_type: {type: String},
     google_user_id: {type: Number},
@@ -20,6 +24,8 @@ var UserSchema = new Schema({
     creation_time: {type: String, default: Date.now, required: true},
     modification_time: {type: String, default: Date.now, required: true}
 }, {collection: 'users'});
+
+UserSchema.plugin(mongoosePaginate);
 
 // hash password
 UserSchema.methods.generateHash = function(password) {
